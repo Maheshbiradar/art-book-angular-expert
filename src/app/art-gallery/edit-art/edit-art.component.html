@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-xs-12">
+      <form [formGroup] = "editForm" (ngSubmit) ="onSubmit()">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="btn-toolbar">
+            <button
+              type="submit"
+              [disabled] = "!editForm.valid"
+              class="btn btn-success"
+             >Save</button>
+            <button type="button" 
+            class="btn btn-danger"
+            (click) = "onCancel()">
+            Cancel</button>
+          </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"       
+                formControlName="name"         
+                class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="imagePath">Image Path</label>
+              <input
+                type="text"
+                formControlName="imagePath" 
+                id="imagePath"
+                #imgPath
+                class="form-control"
+               >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <img 
+            [src] ="imgPath.value"
+            class="img-responsive"
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea
+                type="text"
+                id="description"
+                formControlName="description" 
+                class="form-control"
+                rows="6"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row" formArrayName = "artMaterials">
+          <div class="col-xs-12">
+            <div
+              class="row"  
+              *ngFor="let materialCtrl of controls; let i = index"
+              [formGroupName] = "i"            
+              style="margin-top: 10px;">
+              <div class="col-xs-7">
+                <input
+                  type="text"
+                  formControlName='name'
+                  class="form-control">
+              </div>
+              <div class="col-xs-3">
+                <input
+                  type="number"
+                  formControlName="amount"
+                  class="form-control">
+              </div>
+              <div class="col-xs-2">
+                <button
+                  type="button"
+                  (click) = "onDeleteMaterial(i)"
+                  class="btn btn-danger">X</button>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-12">
+                <button
+                  type="button"
+                  (click) ="onAddMaterial()"
+                  class="btn btn-success">Add Art Material</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
