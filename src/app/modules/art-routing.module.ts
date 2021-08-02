@@ -9,14 +9,16 @@ import { ArtDetailComponent } from '../art-gallery/art-detail/art-detail.compone
 import { ArtResolverService } from '../services/art-resolver.service';
 
 const artRoutes: Routes = [
-  {path: 'arts', component: ArtGalleryComponent, 
-  canActivate: [AuthGuard],
-  children: [
-      { path:'', component: ArtStarterComponent },
-      { path:'new', component: EditArtComponent },
-      { path:':id', component: ArtDetailComponent, resolve: [ArtResolverService] },
-      { path: ':id/edit', component: EditArtComponent, resolve: [ArtResolverService] }
-  ]}
+  {
+    path: 'arts', component: ArtGalleryComponent, 
+    canActivate: [AuthGuard],
+    children: [
+        { path:'', component: ArtStarterComponent },
+        { path:'new', component: EditArtComponent },
+        { path:':id', component: ArtDetailComponent, resolve: [ArtResolverService] },
+        { path: ':id/edit', component: EditArtComponent, resolve: [ArtResolverService] }
+    ]
+  }
 ];
 
 @NgModule({

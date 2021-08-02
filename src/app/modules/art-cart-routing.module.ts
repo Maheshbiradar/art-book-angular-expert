@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ArtShoppingCartComponent } from '../art-shopping-cart/art-shopping-cart.component';
 import { RouterModule, Routes } from '@angular/router';
 
-type NewType = Routes;
-
-const cartRoutes: NewType = [   
+const cartRoutes: Routes = [   
   {path: 'cart', component: ArtShoppingCartComponent }
 ]
 

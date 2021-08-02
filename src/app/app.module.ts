@@ -1,27 +1,24 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { appDropdownDirective } from './directives/dropdown-directive';
 import { CartService } from './services/cart.service';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { ArtService } from './services/art.service';
 import { AuthComponent } from './auth/auth.component';
-import { LoaderComponent } from './shared/loader.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ArtModule } from './modules/art.module';
 import { ArtCartModule } from './modules/art-cart.module';
+import { SharedModule } from './modules/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,    
-    appDropdownDirective,    
-    AuthComponent,
-    LoaderComponent
+    AuthComponent     
   ],
   imports: [
     BrowserModule,
@@ -30,7 +27,8 @@ import { ArtCartModule } from './modules/art-cart.module';
     ReactiveFormsModule,
     HttpClientModule,
     ArtModule,
-    ArtCartModule
+    ArtCartModule,
+    SharedModule
   ],
   providers: [CartService, ArtService, 
     { 
