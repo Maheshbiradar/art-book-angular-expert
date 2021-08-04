@@ -1,16 +1,31 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
-import { ArtShoppingCartComponent } from "../art-shopping-cart/art-shopping-cart.component";
-import { AuthComponent } from "../auth/auth.component";
 
 const appRoutes: Routes = [
-    {path: '', redirectTo:'/arts', pathMatch: 'full'},    
-    {path: 'cart', component: ArtShoppingCartComponent }
+    {
+        path: '',
+        redirectTo:'/arts', pathMatch: 'full'
+    },
+    {
+        path: "arts",
+        loadChildren: () =>
+          import("../modules/art.module").then(m => m.ArtModule)
+    },
+    {
+        path: "cart",
+        loadChildren: () =>
+          import("../modules/art-cart.module").then(m => m.ArtCartModule)
+    },
+    {
+        path: "auth",
+        loadChildren: () =>
+          import("../modules/auth.module").then(m => m.AuthModule)
+    }
 ]
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
+    imports: [RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules })],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

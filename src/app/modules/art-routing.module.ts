@@ -10,7 +10,7 @@ import { ArtResolverService } from '../services/art-resolver.service';
 
 const artRoutes: Routes = [
   {
-    path: 'arts', component: ArtGalleryComponent, 
+    path: '', component: ArtGalleryComponent, 
     canActivate: [AuthGuard],
     children: [
         { path:'', component: ArtStarterComponent },

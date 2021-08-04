@@ -4,7 +4,7 @@ import { ArtShoppingCartComponent } from '../art-shopping-cart/art-shopping-cart
 import { RouterModule, Routes } from '@angular/router';
 
 const cartRoutes: Routes = [   
-  {path: 'cart', component: ArtShoppingCartComponent }
+  {path: '', component: ArtShoppingCartComponent }
 ]
 
 @NgModule({
